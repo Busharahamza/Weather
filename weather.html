@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Forecast Application</title>
+  <meta name="description" content="Weather forecast app" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS file -->
+  <link rel="stylesheet" href="weather.css" />
+  
+
+</head>
+
+<body class="min-h-screen bg-slate-900 text-slate-50 flex flex-col">
+  <header class="px-4 py-3 bg-slate-950 shadow-md flex items-center justify-between">
+    <h1 class="text-xl sm:text-2xl font-bold tracking-wide">
+      Weatherly
+    </h1>
+    <p class="hidden sm:block text-sm text-slate-300">
+      Search city or use your location for instant forecast
+    </p>
+  </header>
+
+  <main class="flex-1 px-4 py-4 max-w-5xl mx-auto w-full">
+    <!-- Search + Current Location + Recent Dropdown -->
+    <section class="mb-4 space-y-3">
+      <div class="flex flex-col md:flex-row gap-3">
+        <input
+          id="cityInput"
+          type="text"
+          placeholder="Search by city name..."
+          class="flex-1 px-3 py-2 rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        />
+        <button
+          id="searchBtn"
+          class="px-4 py-2 rounded-md bg-sky-500 hover:bg-sky-600 transition text-sm font-semibold"
+        >
+          Search
+        </button>
+        <button
+          id="currentLocationBtn"
+          class="px-4 py-2 rounded-md bg-emerald-500 hover:bg-emerald-600 transition text-sm font-semibold"
+        >
+          Use My Location
+        </button>
+      </div>
+
+      <!-- Recent Cities Dropdown (hidden initially) -->
+      <div id="recentWrapper" class="relative hidden">
+        <button
+          id="recentToggle"
+          class="px-3 py-2 rounded-md bg-slate-800 text-sm flex items-center justify-between w-full"
+        >
+          Recently searched cities
+          <span class="ml-2 text-xs text-slate-300">(click to choose)</span>
+        </button>
+        <ul
+          id="recentList"
+          class="absolute mt-1 w-full bg-slate-800 rounded-md shadow-lg max-h-60 overflow-y-auto text-sm hidden z-10"
+        >
+          <!-- items added dynamically -->
+        </ul>
+      </div>
+
+      <!-- Error / Info messages -->
+      <p id="messageBox" class="text-sm text-rose-400 h-5"></p>
+    </section>
+
+    <!-- Today + Unit Toggle + Alerts -->
+    <section id="todaySection" class="mb-6 p-4 rounded-xl bg-slate-800/80 shadow-md flex flex-col md:flex-row gap-4 items-center">
+      <div class="flex-1">
+        <h2 class="text-lg font-semibold mb-1">Today’s Weather</h2>
+        <p id="todayLocation" class="text-sm text-slate-300 mb-2">Search a city to see details.</p>
+        <div class="flex items-center gap-4">
+          <div class="flex items-baseline gap-1">
+            <span id="todayTemp" class="text-4xl font-bold">--</span>
+            <span id="tempUnit" class="text-xl">°C</span>
+          </div>
+          <div>
+            <p id="todayDesc" class="capitalize text-sm text-slate-200">--</p>
+            <p id="todayExtra" class="text-xs text-slate-300">Humidity: -- | Wind: --</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-end gap-3">
+        <!-- Unit toggle -->
+        <div class="flex items-center gap-2 text-sm">
+          <span>°C</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input id="unitToggle" type="checkbox" class="sr-only peer" />
+            <div class="w-11 h-6 bg-slate-600 peer-focus:outline-none rounded-full peer peer-checked:bg-sky-500 after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:h-5 after:w-5 after:rounded-full after:transition-all peer-checked:after:translate-x-5"></div>
+          </label>
+          <span>°F</span>
+        </div>
+        <!-- Alert -->
+        <p id="alertBox" class="text-xs text-amber-300 max-w-xs text-right"></p>
+      </div>
+    </section>
+
+    <!-- 5-Day Forecast -->
+    <section class="mb-4">
+      <h2 class="text-lg font-semibold mb-3">5-Day Forecast</h2>
+      <div id="forecastGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <!-- cards dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-4 py-3 text-center text-xs text-slate-400 bg-slate-950">
+    Built with HTML, Tailwind CSS, and JavaScript – Weather API powered by OpenWeatherMap.
+  </footer>
+
+  <script src="weather1.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+/* Extra background variants for conditions */
+body.sunny {
+  background: radial-gradient(circle at top, #f97316 0, #0f172a 55%);
+}
+
+body.rainy {
+  background: radial-gradient(circle at top, #0ea5e9 0, #020617 60%);
+}
+
+body.cloudy {
+  background: radial-gradient(circle at top, #64748b 0, #020617 60%);
+}
